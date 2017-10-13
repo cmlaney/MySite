@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="well">
+            <div class="container" align="center">
+                <h3 class="text-muted">CFB Matchup Analyzer</h3>
+                {% if teams %}
+                <p>
+                    Tool for comparing NCAA FBS teams
+                </p>
+                <div class="row">
+                    {% if teams %}
+                    <form action="matchup-analyzer" method="POST">
+                        <div class="form-group" style="width:30%;">
+                            <label for="teamA">Select Team:</label>
+                            <select class="form-control" name="teamA" id="teamA">
+                                {% for conf, divs in teams.items() %}
+                                    {% for div, confTeams in divs.items() %}
+                                        <optgroup label="{{conf}}, {{div}}">
+                                        {% for team in confTeams %}
+                                            <option value="{{ team }}">{{ team }}</option>
+                                        {% endfor %}
+                                        </optgroup>
+                                    {% endfor %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <input type="submit" value="Fetch" class="btn">
+                    </form>
+                    {% endif %}
+                </div>
+                {% else %}
+                    {% if teamStats %}
+                    <h4 class="text-muted">Statistics</h4>
+                    <div class="row" style="width:80%;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Statistic</th>
+                                    {% for date in teamStats['date'] %}
+                                    <th>{{ date }}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for key in keys %}
+                                <tr>
+                                    <td>{{niceKeys[key]}}</td>
+                                    {% for element in teamStats[key] %}
+                                    <td>{{ element }}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endif %}
+                <div class="row">
+                    <a href="matchup-analyzer" class="btn">New Comparison</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

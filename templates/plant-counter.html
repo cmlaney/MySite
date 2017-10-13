@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+        <div class="well">
+            <div class="container" align="center">
+                <h3 class="text-muted">Plant Counter</h3>
+                {% if results %}
+                <div class="row" style="width:80%;">
+                    <textarea rows="15" columns="" style="width: inherit;" name="text">{{ results }}</textarea>
+                </div>
+                <div class="row">
+                    <a href="plant-counter" class="btn">Clear</a>
+                </div>
+                {% else %}
+                <form action="plant-counter" method="POST">
+                    <div class="row" style="width:80%;">
+                        <textarea rows="15" columns="" style="width: inherit;" name="text">{{ results }}</textarea>
+                    </div>
+                    <div class="row">
+                        <input type="submit" name="my-form" value="Count" class="btn">
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+
+{% endblock %}

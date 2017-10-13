@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Utilities App</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Utilities</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="plant-counter">Plant Counter</span></a></li>
+                            <li><a href="matchup-analyzer">CFB Matchup Analyzer</span></a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+            {% block content %}{% endblock %}
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
